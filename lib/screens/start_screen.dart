@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oxi_sim/screens/instructor_screen.dart';
 import 'package:oxi_sim/screens/simulator_screen.dart';
 
 class StartScreen extends StatelessWidget {
@@ -10,34 +11,72 @@ class StartScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Oxi Sim'),
       ),
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Text(
-            'Wähle einen Modus',
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          Expanded(
-            child: Material(
-              child: InkWell(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SimulatorScreen(),
-                    )),
-                child: const Text('Simulator'),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Wähle einen Modus',
+                style: Theme.of(context).textTheme.headline5,
               ),
             ),
-          ),
-          const Expanded(
-            child: Material(
-              child: InkWell(
-                onTap: null,
-                child: Text('Anweiser'),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Material(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: Theme.of(context).colorScheme.primary,
+                  child: InkWell(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SimulatorScreen(),
+                        )),
+                    child: Center(
+                      child: Text(
+                        'Simulator',
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Material(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: Theme.of(context).colorScheme.primary,
+                  child: InkWell(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const InstructorScreen(),
+                        )),
+                    child: Center(
+                      child: Text(
+                        'Anweiser',
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

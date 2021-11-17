@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:oxi_sim/helpers/simulator/init_simulator.dart';
+import 'package:oxi_sim/screens/simulator_data_screen.dart';
 import 'package:provider/provider.dart';
 
 class SimulatorScreen extends StatelessWidget {
@@ -26,16 +27,11 @@ class SimulatorScreen extends StatelessWidget {
                 .listen((doc) {
               final data = doc.data();
               if (data == null) return;
-              if (data['found']) {
+              if (data['found'] != null && data['found']) {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Scaffold(
-                      body: Center(
-                        child: Text('found'),
-                      ),
-                    ),
-                  ),
+                      builder: (context) => const SimulatorDataScreen()),
                 );
               }
             });
